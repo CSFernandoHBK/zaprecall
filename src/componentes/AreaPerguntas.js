@@ -1,7 +1,7 @@
 import react from "react"
 import styled from "styled-components"
 import seta_play from "../img/seta_play.png"
-// import Pergunta from "./Pergunta"
+import Pergunta from "./Pergunta"
 
 const perguntas = [{
     pergunta: "O que é JSX?", resposta: "Uma extensão de linguagem do JavaScript"
@@ -23,22 +23,22 @@ const perguntas = [{
 ]
 
 export default function AreaPerguntas(){
-
-    const [virada, setVirada] = react.useState("virada");
-
-    let i=0;
+    const [aberta, setaberta] = react.useState();
 
     return(
         <>
-            {perguntas.map((p) => <PerguntaFechada>{p.pergunta}</PerguntaFechada>)}
+            {perguntas.map((p, index) => 
+                <Pergunta pergunta={p} index={index}/>
+            )}
         </>
     )
 }
 
+
 const PerguntaFechada = styled.div`
     width: 300px;
     height: 35px;
-    background-color: #FFFFFF;
+    background-color: "#FFFFFF";
     margin: 12px;
     padding: 15px;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
