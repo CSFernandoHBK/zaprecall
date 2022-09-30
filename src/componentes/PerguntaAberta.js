@@ -2,7 +2,7 @@ import react from "react";
 import styled from "styled-components";
 import seta_virar from "../img/seta_virar.png"
 
-//Aqui dentro devo criar um novo estado, tipo o clicado, para o botão de virar o card. Caso true, ele irá mostrar a resposta
+//Pode criar um estado false que é atualizado para true quando apertar no seta_virar. Nesse estado vai exibir os botoes.
 
 
 export default function PerguntaAberta(props){
@@ -12,12 +12,19 @@ export default function PerguntaAberta(props){
 
     const[clickperg, setclickperg] = react.useState(false);
 
-    console.log(resposta);
-
     return(
         <Perguntaaberta>
             <p>{clickperg ? resposta : pergunta}</p>
             <img src={clickperg ? "" : seta_virar} onClick={() => (setclickperg(true))}/>
+
+            {(clickperg ? 
+            <Containerbotoes>
+                <BotaoNaoLembrei>Não lembrei</BotaoNaoLembrei>
+                <BotaoQuase>Quase não lembrei</BotaoQuase>
+                <BotaoZap>Zap!</BotaoZap>
+            </Containerbotoes>
+            : "")}
+
         </Perguntaaberta>
     )
 }
@@ -46,4 +53,40 @@ const Perguntaaberta = styled.div`
         bottom: 10px;
         right: 10px;
     }
+`
+
+const Containerbotoes = styled.div`
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    margin: 20px;
+`
+
+const Botao = styled.button`
+    width: 90px;
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    border-radius: 5px;
+    border: 1px solid;
+    padding:5px;
+`
+
+const BotaoNaoLembrei = styled(Botao)`
+    background: #FF3030;
+`
+
+const BotaoQuase = styled(Botao)`
+    background: #FF922E;
+`
+
+const BotaoZap = styled(Botao)`
+    background: #2FBE34;
 `

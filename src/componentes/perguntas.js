@@ -1,7 +1,4 @@
-import Pergunta from "./Pergunta"
-
-const perguntas = [
-  {
+const perguntas = [{
     pergunta: "O que é JSX?", resposta: "Uma extensão de linguagem do JavaScript"
 },{
     pergunta: "O React é __", resposta: "uma biblioteca JavaScript para construção de interfaces"
@@ -19,13 +16,3 @@ const perguntas = [
     pergunta:"Usamos estado (state) para __", resposta:"dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"
 }
 ]
-
-export default function AreaPerguntas(){
-    return(
-        <>
-            {perguntas.map((p, index) => 
-                <Pergunta pergunta={p} index={index} key={index}/>
-            )}
-        </>
-    )
-}
