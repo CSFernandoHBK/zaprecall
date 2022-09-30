@@ -2,15 +2,22 @@ import react from "react";
 import styled from "styled-components";
 import seta_virar from "../img/seta_virar.png"
 
+//Aqui dentro devo criar um novo estado, tipo o clicado, para o botão de virar o card. Caso true, ele irá mostrar a resposta
+
 
 export default function PerguntaAberta(props){
 
     const pergunta = props.props.pergunta.pergunta;
+    const resposta = props.props.pergunta.resposta;
+
+    const[clickperg, setclickperg] = react.useState(false);
+
+    console.log(resposta);
 
     return(
         <Perguntaaberta>
-            <p>{pergunta}</p>
-            <img src={seta_virar} onClick={() => (console.log("Apertou pra virar a pergunta ", pergunta))}/>
+            <p>{clickperg ? resposta : pergunta}</p>
+            <img src={clickperg ? "" : seta_virar} onClick={() => (setclickperg(true))}/>
         </Perguntaaberta>
     )
 }

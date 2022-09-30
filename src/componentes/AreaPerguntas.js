@@ -24,7 +24,7 @@ export default function AreaPerguntas(){
     return(
         <>
             {perguntas.map((p, index) => 
-                <Pergunta pergunta={p} index={index}/>
+                <Pergunta pergunta={p} index={index} key={index}/>
             )}
         </>
     )
