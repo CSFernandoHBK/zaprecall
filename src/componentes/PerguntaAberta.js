@@ -18,7 +18,7 @@ export default function PerguntaAberta(props){
     const quantPerguntaRespondida = props.props.quantPerguntaRespondida; 
     const setquantPerguntaRespondida = props.props.setquantPerguntaRespondida;
 
-    const index = props.props.index + 1
+    const indice = props.props.index + 1
 
     function naoLembrei(){
         setnao(true);
@@ -40,8 +40,8 @@ export default function PerguntaAberta(props){
 
     return(
         <Perguntaaberta finalizada={finalizada} nao={nao} quase={quase} estzap={estzap}>
-            <p>{clickperg ? resposta : pergunta}</p>
-            <img src={clickperg ? null : seta_virar} onClick={() => (setclickperg(true))}/>
+            <p>{clickperg ? (finalizada ? `Pergunta ${indice}` : resposta) : pergunta}</p>
+            <img src={clickperg ? (finalizada ? (nao ? icone_erro : (quase ? icone_quase : icone_certo)) : null) : seta_virar} onClick={() => (setclickperg(true))}/>
 
             {((clickperg && !finalizada) ? 
             <Containerbotoes>
@@ -72,11 +72,11 @@ const Perguntaaberta = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: ${(props) => (props.finalizada ? "center" : "space-between")};
 
     img{
         position: absolute;
-        bottom: 10px;
+        bottom: ${(props) => (props.finalizada ? "20px" : "10px")};;
         right: 10px;
     }
 `
