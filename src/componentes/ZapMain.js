@@ -19,7 +19,9 @@ export default function ZapMain() {
     return (
         <ScreenContainer>
             <LogoContainer/>
-            <AreaPerguntas/>
+            <AreaPerguntas quantPergunta={quantPergunta}
+            quantPerguntaRespondida={quantPerguntaRespondida}
+            setquantPerguntaRespondida={setquantPerguntaRespondida}/>
             <Footer quantPergunta={quantPergunta}
             quantPerguntaRespondida={quantPerguntaRespondida}
             setquantPerguntaRespondida={setquantPerguntaRespondida}/>

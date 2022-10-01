@@ -5,6 +5,9 @@ import PerguntaFechada from "./PerguntaFechada";
 
 export default function Pergunta(props){
 
+    const quantPerguntaRespondida = props.quantPerguntaRespondida; 
+    const setquantPerguntaRespondida = props.setquantPerguntaRespondida;
+
     const [clicado, setclicado] = react.useState(false);
 
     return(

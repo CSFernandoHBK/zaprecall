@@ -1,30 +1,55 @@
 import react from "react";
 import styled from "styled-components";
-import seta_virar from "../img/seta_virar.png"
-
-//Pode criar um estado false que é atualizado para true quando apertar no seta_virar. Nesse estado vai exibir os botoes.
-
+import seta_virar from "../img/seta_virar.png";
+import icone_certo from "../img/icone_certo.png";
+import icone_erro from "../img/icone_erro.png";
+import icone_quase from "../img/icone_quase.png";
 
 export default function PerguntaAberta(props){
 
+    const[clickperg, setclickperg] = react.useState(false);
+    const[finalizada, setfinalizada] = react.useState(false);
+    const[nao, setnao] = react.useState(false);
+    const[quase, setquase] = react.useState(false);
+    const[estzap, setestzap] = react.useState(false);
+
     const pergunta = props.props.pergunta.pergunta;
     const resposta = props.props.pergunta.resposta;
+    const quantPerguntaRespondida = props.props.quantPerguntaRespondida; 
+    const setquantPerguntaRespondida = props.props.setquantPerguntaRespondida;
 
-    const[clickperg, setclickperg] = react.useState(false);
+    const index = props.props.index + 1
+
+    function naoLembrei(){
+        setnao(true);
+        setfinalizada(true);
+        setquantPerguntaRespondida(quantPerguntaRespondida + 1);
+    }
+
+    function quaseLembrei(){
+        setquase(true);
+        setfinalizada(true);
+        setquantPerguntaRespondida(quantPerguntaRespondida + 1);
+    }
+
+    function zap(){
+        setestzap(true)
+        setfinalizada(true);
+        setquantPerguntaRespondida(quantPerguntaRespondida + 1);
+    }
 
     return(
-        <Perguntaaberta>
+        <Perguntaaberta finalizada={finalizada} nao={nao} quase={quase} estzap={estzap}>
             <p>{clickperg ? resposta : pergunta}</p>
-            <img src={clickperg ? "" : seta_virar} onClick={() => (setclickperg(true))}/>
+            <img src={clickperg ? null : seta_virar} onClick={() => (setclickperg(true))}/>
 
-            {(clickperg ? 
+            {((clickperg && !finalizada) ? 
             <Containerbotoes>
-                <BotaoNaoLembrei>Não lembrei</BotaoNaoLembrei>
-                <BotaoQuase>Quase não lembrei</BotaoQuase>
-                <BotaoZap>Zap!</BotaoZap>
+                <BotaoNaoLembrei onClick={() => (naoLembrei())}>Não lembrei</BotaoNaoLembrei>
+                <BotaoQuase onClick={() => (quaseLembrei())}>Quase não lembrei</BotaoQuase>
+                <BotaoZap onClick={() => (zap())}>Zap!</BotaoZap>
             </Containerbotoes>
             : "")}
-
         </Perguntaaberta>
     )
 }
@@ -33,7 +58,7 @@ const Perguntaaberta = styled.div`
     width: 300px;
     margin: 12px;
     padding: 15px;
-    min-height: 100px;
+    min-height: ${(props) => (props.finalizada ? "35px" : "100px")};
     background: #FFFFD5;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
@@ -42,7 +67,8 @@ const Perguntaaberta = styled.div`
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
-    color: #333333;
+    text-decoration: ${(props) => (props.finalizada ? "line-through" : "none")};
+    color: ${(props) => (props.finalizada ? (props.nao ? "#FF3030" : (props.quase ? "#FF922E" : "#2FBE34")) : "#333333")};
     position: relative;
     display: flex;
     flex-direction: column;
@@ -57,9 +83,9 @@ const Perguntaaberta = styled.div`
 
 const Containerbotoes = styled.div`
     display: flex;
-    width: 80%;
+    width: 100%;
     justify-content: space-between;
-    margin: 20px;
+    margin: 25px auto 10px;
 `
 
 const Botao = styled.button`

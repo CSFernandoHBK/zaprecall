@@ -20,11 +20,17 @@ const perguntas = [
 }
 ]
 
-export default function AreaPerguntas(){
+export default function AreaPerguntas(props){
+
+    const quantPerguntaRespondida = props.quantPerguntaRespondida;
+    const setquantPerguntaRespondida = props.setquantPerguntaRespondida;
+
     return(
         <>
             {perguntas.map((p, index) => 
-                <Pergunta pergunta={p} index={index} key={index}/>
+                <Pergunta pergunta={p} index={index} key={index} 
+                quantPerguntaRespondida={quantPerguntaRespondida}
+                setquantPerguntaRespondida={setquantPerguntaRespondida}/>
             )}
         </>
     )
