@@ -3,6 +3,7 @@ import styled from "styled-components"
 import AreaPerguntas from "./AreaPerguntas"
 import Footer from "./Footer"
 import LogoContainer from "./LogoContainer"
+import BoasVindas from "./BoasVindas"
 
 // as props dos botoes tem que ser passadas do zapmain > areaperguntas > pergunta > perguntaaberta 
 
@@ -11,12 +12,15 @@ export default function ZapMain() {
 
     const [quantPergunta, setquantPergunta] = react.useState(8);
     const [quantPerguntaRespondida, setquantPerguntaRespondida] = react.useState(0);
-    const [respNao, setrespNao] = react.useState([]);
-    const [respQuase, setrespQuase] = react.useState([]);
-    const [respZap, setrespZap] = react.useState([]);
+    const [tela, settela] = react.useState(true);
+
 
 
     return (
+        tela 
+        ?
+        <BoasVindas settela={settela}/>
+        :
         <ScreenContainer>
             <LogoContainer/>
             <AreaPerguntas quantPergunta={quantPergunta}
