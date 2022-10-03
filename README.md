@@ -1,6 +1,6 @@
 # Aplicativo para revisão de conteúdos - Zap Recall
 
-Este projeto foi desenvolvido como parte do bootcamp da Driven Education
+Este aplicativo foi desenvolvido para apoiar os estudos, tendo como base a tecnica de revisão `Recall`.
 
 ## Tecnologias utilizadas
 

@@ -40,14 +40,14 @@ export default function PerguntaAberta(props){
 
     return(
         <Perguntaaberta finalizada={finalizada} nao={nao} quase={quase} estzap={estzap}>
-            <p>{clickperg ? (finalizada ? `Pergunta ${indice}` : resposta) : pergunta}</p>
-            <img src={clickperg ? (finalizada ? (nao ? icone_erro : (quase ? icone_quase : icone_certo)) : null) : seta_virar} onClick={() => (setclickperg(true))}/>
+            <p data-identifier="flashcard-answer">{clickperg ? (finalizada ? `Pergunta ${indice}` : resposta) : pergunta}</p>
+            <img src={clickperg ? (finalizada ? (nao ? icone_erro : (quase ? icone_quase : icone_certo)) : null) : seta_virar} onClick={() => (setclickperg(true))} data-identifier="flashcard-turn-btn"/>
 
             {((clickperg && !finalizada) ? 
             <Containerbotoes>
-                <BotaoNaoLembrei onClick={() => (naoLembrei())}>Não lembrei</BotaoNaoLembrei>
-                <BotaoQuase onClick={() => (quaseLembrei())}>Quase não lembrei</BotaoQuase>
-                <BotaoZap onClick={() => (zap())}>Zap!</BotaoZap>
+                <BotaoNaoLembrei onClick={() => (naoLembrei())} data-identifier="forgot-btn">Não lembrei</BotaoNaoLembrei>
+                <BotaoQuase onClick={() => (quaseLembrei())} data-identifier="almost-forgot-btn">Quase não lembrei</BotaoQuase>
+                <BotaoZap onClick={() => (zap())} data-identifier="zap-btn">Zap!</BotaoZap>
             </Containerbotoes>
             : "")}
         </Perguntaaberta>

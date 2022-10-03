@@ -10,22 +10,23 @@ import BoasVindas from "./BoasVindas"
 
 export default function ZapMain() {
 
-    const [quantPergunta, setquantPergunta] = react.useState(8);
+    const [deck, setdeck] = react.useState([]);
+    const [quantPergunta, setquantPergunta] = react.useState(deck.length);
     const [quantPerguntaRespondida, setquantPerguntaRespondida] = react.useState(0);
     const [tela, settela] = react.useState(true);
-
-
 
     return (
         tela 
         ?
-        <BoasVindas settela={settela}/>
+        <BoasVindas settela={settela} setdeck={setdeck}/>
         :
         <ScreenContainer>
             <LogoContainer/>
             <AreaPerguntas quantPergunta={quantPergunta}
+            setquantPergunta={setquantPergunta}
             quantPerguntaRespondida={quantPerguntaRespondida}
-            setquantPerguntaRespondida={setquantPerguntaRespondida}/>
+            setquantPerguntaRespondida={setquantPerguntaRespondida}
+            deck={deck}/>
             <Footer quantPergunta={quantPergunta}
             quantPerguntaRespondida={quantPerguntaRespondida}
             setquantPerguntaRespondida={setquantPerguntaRespondida}/>

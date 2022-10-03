@@ -4,7 +4,6 @@ export default function Footer(props){
 
     const quantPergunta = props.quantPergunta;
     const quantPerguntaRespondida = props.quantPerguntaRespondida;
-    const setquantPerguntaRespondida = props.setquantPerguntaRespondida;
 
     return(
         <Footerconcluidos>

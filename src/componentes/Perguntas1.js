@@ -1,4 +1,4 @@
-const perguntas = [{
+const perguntas1 = [{
     pergunta: "O que é JSX?", resposta: "Uma extensão de linguagem do JavaScript"
 },{
     pergunta: "O React é __", resposta: "uma biblioteca JavaScript para construção de interfaces"
@@ -16,3 +16,5 @@ const perguntas = [{
     pergunta:"Usamos estado (state) para __", resposta:"dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"
 }
 ]
+
+export default perguntas1

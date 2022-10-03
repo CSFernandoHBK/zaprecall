@@ -1,4 +1,3 @@
-import react from "react";
 import styled from "styled-components";
 import seta_play from "../img/seta_play.png";
 
@@ -10,7 +9,7 @@ export default function PerguntaFechada(props){
     return(
         <Perguntafechada>
             <p>Pergunta {index + 1}</p>
-            <img src={seta_play}/>
+            <img src={seta_play} alt="img"/>
         </Perguntafechada>
     );
 }

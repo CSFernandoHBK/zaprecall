@@ -1,18 +1,42 @@
+import react from "react";
 import styled from "styled-components"
 import logo from "../img/logo.png"
+import perguntas2 from "./Perguntas2";
+import perguntas1 from "./Perguntas1";
+import perguntas3 from "./Perguntas3";
 
 export default function BoasVindas(props){
 
     const settela = props.settela;
+    const setdeck = props.setdeck;
+    const [opselect, setopselect] = react.useState([]);
+    
+
+    function selecionarDeck(){
+        if(opselect === "perguntas1"){
+            setdeck(perguntas1);
+        } else if(opselect === "perguntas2"){
+            setdeck(perguntas2);
+        } else{
+            setdeck(perguntas3);
+        }
+    }
 
     function iniciar(){
-        settela(false)
+        selecionarDeck();
+        settela(false);
     }
 
     return(
         <Tela>
-            <img src={logo}/>
+            <img src={logo} alt="img"/>
             <p>ZapRecall</p>
+            <select onChange={(event) => (setopselect(event.target.value))}>
+                <option selected disabled>Escolha seu deck:</option>
+                <option value="perguntas1">JSX e React</option>
+                <option value="perguntas2">Naruto</option>
+                <option value="perguntas3">Pessoais</option>
+            </select>
             <button onClick={() => (iniciar())}>Iniciar Recall!</button>
         </Tela>
     )
@@ -59,4 +83,13 @@ const Tela = styled.div`
         text-align: center;
         color: #D70900;
     }
+
+    select{
+        background: #FFFFFF;
+        border-radius: 5px;
+        min-width: 246px;
+        min-height: 54px;
+        margin-bottom: 15px;
+    }
+
 `
